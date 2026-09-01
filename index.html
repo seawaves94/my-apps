@@ -1,92 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Discover my Android apps on Google Play.">
-<meta name="theme-color" content="#111111">
-<title>My Apps</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f6f7fb;color:#171717}
-.wrap{max-width:760px;margin:auto;padding:32px 18px 50px}
-.hero{text-align:center;margin-bottom:26px}
-.hero h1{font-size:32px;margin:8px 0}
-.hero p{color:#666;margin:0}
-.apps{display:grid;gap:16px}
-.card{background:#fff;border:1px solid #e6e6e6;border-radius:20px;padding:22px;box-shadow:0 5px 20px rgba(0,0,0,.04)}
-.icon{font-size:38px}
-.card h2{margin:10px 0 7px;font-size:21px}
-.card p{color:#666;line-height:1.5;margin:0 0 18px}
-.btn{display:block;width:100%;border:0;cursor:pointer;text-align:center;text-decoration:none;background:#111;color:#fff;padding:14px 18px;border-radius:12px;font:inherit;font-weight:700}
-.btn:active{transform:scale(.99)}
-.note{text-align:center;color:#777;font-size:12px;line-height:1.45;margin:16px auto 0;max-width:560px}
-.foot{text-align:center;color:#888;font-size:13px;margin-top:24px}
-@media(min-width:650px){.apps{grid-template-columns:1fr 1fr}.card:last-child{grid-column:1/-1}}
-</style>
-</head>
-<body>
-<main class="wrap">
-<section class="hero">
-<div style="font-size:48px">📱</div>
-<h1>Discover My Apps</h1>
-<p>Simple and useful Android apps available on Google Play.</p>
-</section>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Apps</title>
 
-<section class="apps">
-<article class="card">
-<div class="icon">📚</div>
-<h2>Livres Classiques Français</h2>
-<p>Explore classic French literature in one convenient app.</p>
-<button class="btn play-btn" type="button" data-package="com.tourisminturkey.livres">Open in Google Play</button>
-</article>
-
-<article class="card">
-<div class="icon">🎂</div>
-<h2>Age Calculator</h2>
-<p>Calculate age, dates, and time differences quickly and easily.</p>
-<button class="btn play-btn" type="button" data-package="com.tourisminturkey.agedatecalculator">Open in Google Play</button>
-</article>
-
-<article class="card">
-<div class="icon">❄️</div>
-<h2>Winter Wallpaper</h2>
-<p>Beautiful winter and holiday wallpapers for your phone.</p>
-<button class="btn play-btn" type="button" data-package="com.tourisminturkey.holidayschristmaswallpaper">Open in Google Play</button>
-</article>
-</section>
-
-<p class="note">On Android, the button will try to open the Google Play app directly. If your in-app browser blocks app links, it will fall back to the Google Play website.</p>
-<p class="foot">Available on Android • Google Play</p>
-</main>
-
-<script>
-(function () {
-  function openPlayStore(packageName) {
-    var webUrl = 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(packageName);
-    var isAndroid = /Android/i.test(navigator.userAgent);
-
-    if (!isAndroid) {
-      window.location.href = webUrl;
-      return;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    // Android intent: explicitly asks the system to open Google Play (com.android.vending).
-    // browser_fallback_url is used when the Play Store cannot be opened.
-    var fallback = encodeURIComponent(webUrl);
-    var intentUrl = 'intent://details?id=' + packageName +
-      '#Intent;scheme=market;package=com.android.vending;' +
-      'S.browser_fallback_url=' + fallback + ';end';
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      color: #111;
+    }
 
-    window.location.href = intentUrl;
-  }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px 15px;
+    }
 
-  document.querySelectorAll('.play-btn').forEach(function (button) {
-    button.addEventListener('click', function () {
-      openPlayStore(button.getAttribute('data-package'));
-    });
-  });
-})();
-</script>
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .app {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .app-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .icon {
+      font-size: 38px;
+    }
+
+    .app-name {
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .play-button {
+      display: block;
+      margin-top: 18px;
+      padding: 15px;
+      background: #111;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      color: #777;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>📱 My Apps</h1>
+
+  <div class="app">
+    <div class="app-info">
+      <div class="icon">📚</div>
+      <div class="app-name">Livres Classiques Français</div>
+    </div>
+
+    <a class="play-button"
+       href="https://play.google.com/store/apps/details?id=com.tourisminturkey.livres">
+       ▶ Google Play
+    </a>
+  </div>
+
+
+  <div class="app">
+    <div class="app-info">
+      <div class="icon">🎂</div>
+      <div class="app-name">Age Calculator</div>
+    </div>
+
+    <a class="play-button"
+       href="https://play.google.com/store/apps/details?id=com.tourisminturkey.agedatecalculator">
+       ▶ Google Play
+    </a>
+  </div>
+
+
+  <div class="app">
+    <div class="app-info">
+      <div class="icon">❄️</div>
+      <div class="app-name">Winter Wallpaper</div>
+    </div>
+
+    <a class="play-button"
+       href="https://play.google.com/store/apps/details?id=com.tourisminturkey.holidayschristmaswallpaper">
+       ▶ Google Play
+    </a>
+  </div>
+
+  <div class="footer">
+    Android • Google Play
+  </div>
+
+</div>
+
 </body>
 </html>
